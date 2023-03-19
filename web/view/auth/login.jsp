@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body style="font-family: Comic Sans MS">
-        <form action="login" method = "POST">
+        <form action="login" method = "POST" style="text-align: center; margin-top: 200px">
             <p>
                 Username: <input type="text" id="username" name="username" placeholder="Username" required style="font-family: Comic Sans MS"><i class="validation"><span></span><span></span></i>
             </p>
