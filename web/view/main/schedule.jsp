@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
+    <body style="background-image: url('img/necoarc walc.gif'); background-attachment: fixed; background-size: 100% 100%">
         <audio preload="auto" loop src="heh/nyanyanya.mp3" autoplay>
         </audio>
         <script>
