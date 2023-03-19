@@ -28,7 +28,7 @@ public abstract class BaseRequiredAuthenticatedController extends HttpServlet {
             updb.update(a.getAccid(), count);
             doGet(request, response, (Account) request.getSession().getAttribute("acc"));
         } else {
-            response.sendRedirect("http://localhost:9999/PRJ_Assignment/accessDenied");
+            response.sendRedirect("/denied");
 //            response.getWriter().println("access denied!");
         }
     }
@@ -45,7 +45,7 @@ public abstract class BaseRequiredAuthenticatedController extends HttpServlet {
         if (isAuthenticated(request)) {
             doPost(request, response, (Account) request.getSession().getAttribute("acc"));
         } else {
-            response.sendRedirect("http://localhost:9999/PRJ_Assignment/accessDenied");
+            response.sendRedirect("/denied");
 //            response.getWriter().println("access denied!");
         }
     }

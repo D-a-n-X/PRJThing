@@ -163,8 +163,6 @@ public class LecturerDBContext extends DBContext {
                 ses.setSlot(t);
                 
                 lecturer.getSessions().add(ses);
-                
-//                currentGroup.getSessions().add(ses);
             }
         } catch (SQLException ex) {
             Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);

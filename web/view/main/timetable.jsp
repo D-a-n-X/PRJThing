@@ -15,6 +15,56 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <audio preload="auto" loop src="heh/nyanyanya.mp3" autoplay>
+        </audio>
+        <script>
+
+function setCookie(c_name,value,exdays)
+{
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value=escape(value) + ((exdays===null) ? "" : "; expires="+exdate.toUTCString());
+    document.cookie=c_name + "=" + c_value;
+}
+
+function getCookie(c_name)
+{
+    var i,x,y,ARRcookies=document.cookie.split(";");
+    for (i=0;i<ARRcookies.length;i++)
+    {
+      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+      x=x.replace(/^\s+|\s+$/g,"");
+      if (x===c_name)
+        {
+        return unescape(y);
+        }
+      }
+}
+
+var song = document.getElementsByTagName('audio')[0];
+var played = false;
+var tillPlayed = getCookie('timePlayed');
+function update()
+{
+    if(!played){
+        if(tillPlayed){
+        song.currentTime = tillPlayed;
+        song.play();
+        played = true;
+        }
+        else {
+                song.play();
+                played = true;
+        }
+    }
+
+    else {
+    setCookie('timePlayed', song.currentTime);
+    }
+}
+setInterval(update,0);
+</script>
         <div class="row" style="font-family: Comic Sans MS; height: 40px; width: 1100px; margin-top: 30px; margin-left: 200px; display: flex">
             <div class="col-md-6" style="text-align: left; display: flex">
                     <h3 style="margin-top: 8px; margin-left: 20px"><strong>View Schedule</strong></h3></a>
@@ -56,21 +106,21 @@
         </form>
         <div style="font-family: Comic Sans MS; margin-left: 200px">
                 <c:if test="${requestScope.dates ne null}">
-                    <table style="border: 2px solid black;" border="1px"> 
-                        <tr style="background-color: orange">
+                    <table> 
+                        <tr>
                             <th rowspan="2"></th>
                                 <c:forEach items="${requestScope.dates}" var="d">
                                 <td><b style="text-transform: uppercase"><my:dateTag value="${d}" type="EEE"></my:dateTag></b></td>
                                 </c:forEach>
                         </tr>
-                        <tr style="background-color: orange">
+                        <tr>
                             <c:forEach items="${requestScope.dates}" var="d">
                                 <td><b style="text-transform: uppercase"><my:dateTag value="${d}" type="dateMonth"></my:dateTag></b></td>
                                 </c:forEach>
                         </tr>
                         <c:forEach items="${requestScope.slots}" var="slot"> 
                             <tr>
-                                <td style="background-color: rgb(234, 234, 234)">Slot ${slot.id}</td>
+                                <td>Slot ${slot.id}</td>
                                 <c:forEach items="${requestScope.dates}" var="d">
                                     <td style="width: 120px">
                                         <c:forEach items="${requestScope.s.groups}" var="g">

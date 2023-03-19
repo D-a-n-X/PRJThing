@@ -83,7 +83,6 @@ public class AttendanceDBContext extends DBContext{
                     stm_insert_att.setString(4, a.getDescription());
                     stm_insert_att.executeUpdate();
                 } else {
-                    //UPDATE
                     String sql_update_att = "UPDATE [Attendance]\n"
                             + "   SET \n"
                             + "	   [astatus] = ?\n"
