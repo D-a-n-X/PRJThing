@@ -15,7 +15,7 @@ public class UserDBContext extends DBContext<Account>{
     public Account get(String username, String password, int campus) {
         PreparedStatement stm = null;
         ResultSet rs = null;
-        String sql = "SELECT [accid],[username],[role],[sessionacc] FROM [dbo].[Account]\n" +
+        String sql = "SELECT [accid],[username],[role] FROM [dbo].[Account]\n" +
             "WHERE [username] = ? AND [password] = ? AND [campid] = ?";
         try {
             stm = connection.prepareStatement(sql);
@@ -27,7 +27,6 @@ public class UserDBContext extends DBContext<Account>{
                 Account a = new Account();
                 a.setAccid(rs.getInt("accid"));
                 a.setUsername(username);
-                a.setSessionCount(rs.getInt("sessionacc"));
                 a.setRole(rs.getBoolean("role"));
                 Campus c = new Campus();
                 c.setId(campus);
