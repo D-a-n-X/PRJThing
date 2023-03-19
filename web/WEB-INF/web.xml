@@ -12,6 +12,14 @@
         <servlet-name>DeniedController</servlet-name>
         <servlet-class>controller.auth.DeniedController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TimetableController</servlet-name>
+        <servlet-class>controller.main.TimetableController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controller.auth.LogoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>DeniedController</servlet-name>
         <url-pattern>/denied</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimetableController</servlet-name>
+        <url-pattern>/timetable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
