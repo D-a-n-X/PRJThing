@@ -1,0 +1,7 @@
+/**
+ *
+ * @DanX
+ */
+public class SessionDBContext {
+
+}
