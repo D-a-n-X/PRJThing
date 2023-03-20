@@ -67,6 +67,7 @@ setInterval(update,0);
             <br/>
             <b style="color: #ff6666">You will be redirected to /login after <span id="time"></span> seconds</b>
         </div>
+        <img src="img/necoarc sleep.gif" alt="alt"/>
         <script>
             var count = 3;
             var time = document.getElementById('time');
