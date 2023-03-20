@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
+    <body style="background-image: url('img/necoarc dance 2.gif'); background-attachment: fixed; background-size: 100% 100%">
         <audio preload="auto" loop src="heh/nyanyanya.mp3" autoplay>
         </audio>
         <script>
@@ -85,23 +85,23 @@ setInterval(update,0);
                 </c:forEach>
             </div>
         </div>
-        <form action="attendance" method="POST"> 
-                <table style="margin-left: 200px; margin-top: 50px; border: 2px solid black">
+        <form style="font-family: Comic Sans MS" action="attendance" method="POST"> 
+                <table style="margin-left: 200px; margin-top: 50px">
                     <thead>
-                        <tr style="background-color: rgb(0, 179, 255);">
+                        <tr>
                             <th style="width: 80px; text-align: left;">INDEX</th>
                             <th style="width: 180px; text-align: left;">IMAGE</th>
                             <th style="width: 140px; text-align: left;">CODE</th>
-                            <th style="width: 280px; text-align: left;">FULL NAME</th>
-                            <th style="width: 200px; text-align: left;">ATTENDANCE STATUS</td>
-                            <th style="width: 200px; text-align: left;">LECTURER'S COMMENT</td>
+                            <th style="width: 280px; text-align: left;">NAME</th>
+                            <th style="width: 200px; text-align: left;">STATUS</td>
+                            <th style="width: 200px; text-align: left;">COMMENT</td>
                         </tr>
                     </thead>
                     <tbody>
 
                         <c:forEach items="${requestScope.atts}" var="a" varStatus="loop">
                             <tr>
-                                <td style="background-color: #dddddd"><strong>${loop.index +1}</strong></td>
+                                <td style="text-align: center"><strong>${loop.index +1}</strong></td>
                                 <td><img src="${a.student.img}" alt="alt"/></td>
                                 <td>${a.student.code}</td>
                                 <td>${a.student.name}</td>
@@ -126,7 +126,7 @@ setInterval(update,0);
                     </tbody>
                 </table>
                 <input type="hidden" name="sessionid" value="${param.sesid}"/>
-                <input style="width:  60px; height: 40px; margin-left: 1250px; border: solid black 1px; " type="submit" value="Save"/>
+                <input style="width: 60px; height: 40px; margin-left: 300px" type="submit" value="Save"/>
             </form>
     </body>
 </html>

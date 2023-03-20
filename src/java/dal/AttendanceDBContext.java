@@ -15,7 +15,7 @@ public class AttendanceDBContext extends DBContext{
                 + "a.aid,\n"
                 + "ISNULL(a.astatus,0) as [status],\n"
                 + "ISNULL(a.description,'') as [description]\n"
-                + "FROM Student s LEFT JOIN [StudentGroup] sg ON s.sid = sg.sid\n"
+                + "FROM Student s LEFT JOIN StudentGroup sg ON s.sid = sg.sid\n"
                 + "LEFT JOIN [Group] g ON g.gid = sg.gid\n"
                 + "LEFT JOIN [Session] ses ON ses.gid = g.gid\n"
                 + "LEFT JOIN [Attendance] a ON ses.sessionid = a.sessionid AND s.sid = a.sid\n"
@@ -37,19 +37,19 @@ public class AttendanceDBContext extends DBContext{
                 s.setId(rs.getInt("sid"));
                 s.setCode(rs.getString("scode"));
                 s.setName(rs.getString("sname"));
-                s.setImg(rs.getString("Img"));
+                s.setImg(rs.getString("img"));
                 a.setStudent(s);
                 atts.add(a);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 rs.close();
                 stm.close();
                 connection.close();
             } catch (SQLException ex) {
-                Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return atts;
@@ -103,13 +103,13 @@ public class AttendanceDBContext extends DBContext{
             } catch (SQLException ex1) {
                 Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex1);
             }
-            Logger.getLogger(dal.StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(dal.AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 connection.setAutoCommit(true);
                 connection.close();
             } catch (SQLException ex) {
-                Logger.getLogger(dal.StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(dal.AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

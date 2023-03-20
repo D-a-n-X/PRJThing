@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/dal/SlotDBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/dal/LecturerDBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/view/auth/login.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/controller/auth/DeniedController.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/view/main/schedule.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/img/necoarc%20dance%203.gif</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/view/auth/denied.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/controller/auth/LoginController.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/view/auth/logout.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/model/Lecturer.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/controller/auth/BaseRequiredAuthenticatedController.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/img/necoarc%20dance%202.gif</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/controller/auth/InvalidController.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/img/necoarc%20sleep.gif</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/dal/CampusDBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/dal/StudentDBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/view/auth/invalid.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/view/main/timetable.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/index.html</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/img/necoarc%20dance%201.gif</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/controller/auth/LogoutController.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/dal/UserDBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/model/TimeSlot.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/controller/main/TimetableController.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/controller/main/AttendanceController.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/dal/AttendanceDBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/controller/main/ScheduleController.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/Content/bootstrap.css</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/src/java/dal/SessionDBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/img/necoarc%20walc.gif</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/WEB-INF/tlds/dateTag.tld</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/PRJThing/web/view/main/attendance.jsp</file>
+        </group>
+    </open-files>
+</project-private>
