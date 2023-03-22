@@ -94,10 +94,10 @@ setInterval(update,0);
                 <thead>
                     <tr>
                         <th style="text-align: left">From: <input style="font-family: Comic Sans MS" type="date" name="from" required=""/><br/>
-                            To: <input style="font-family: Comic Sans MS" type="date" name="to" required=""/><br/>
+                            
                         </th>
                         <th>
-                            <input style="font-family: Comic Sans MS; height: 45px" type="submit" value="Enter"/>
+                            <input style="font-family: Comic Sans MS" type="submit" value="Enter"/>
                         </th>
                     </tr>
                 </thead>
@@ -121,7 +121,7 @@ setInterval(update,0);
                                     <td style="width: 120px">
                                         <c:forEach items="${requestScope.l.sessions}" var="ses">
                                             <c:if test="${ses.date eq d and ses.slot.id eq slot.id}">
-                                                <a href="session/info?session=${ses.id}">${ses.course.code}</a><br/>
+                                                <a href="report">${ses.course.code}</a><br/>
                                                 at ${ses.room.name} <br/>
                                                 <c:if test="${ses.status eq true}">
                                                     <a style="color: blue" href="attendance?sesid=${ses.id}">(Update)</a>

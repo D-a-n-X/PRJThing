@@ -95,10 +95,10 @@ setInterval(update,0);
                 <thead>
                     <tr>
                         <th style="text-align: left">From: <input style="font-family: Comic Sans MS" type="date" name="from" required=""/><br/>
-                            To: <input style="font-family: Comic Sans MS" type="date" name="to" required=""/><br/>
+                            
                         </th>
                         <th>
-                            <input style="font-family: Comic Sans MS; height: 45px" type="submit" value="Enter"/>
+                            <input style="font-family: Comic Sans MS" type="submit" value="Enter"/>
                         </th>
                     </tr>
                 </thead>
