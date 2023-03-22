@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/main/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>controller.auth.LoginController</servlet-class>
@@ -50,7 +58,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TimetableController</servlet-name>
-        <url-pattern>/timetable</url-pattern>
+        <url-pattern>/main/timetable</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
@@ -58,19 +66,19 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AttendanceController</servlet-name>
-        <url-pattern>/attendance</url-pattern>
+        <url-pattern>/main/attendance</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ScheduleController</servlet-name>
-        <url-pattern>/schedule</url-pattern>
+        <url-pattern>/main/schedule</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AttendanceCheckController</servlet-name>
-        <url-pattern>/check</url-pattern>
+        <url-pattern>/main/check</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AttendanceReportController</servlet-name>
-        <url-pattern>/report</url-pattern>
+        <url-pattern>/main/report</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
