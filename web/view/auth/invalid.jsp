@@ -65,9 +65,10 @@ setInterval(update,0);
         <div style="text-align: center; margin-top: 200px">
             <h1 style="color: #ff6666">Invalid credentials</h1>
             <br/>
-            <b style="color: #ff6666">You will be redirected to /login after <span id="time"></span> seconds</b>
+            <b style="color: #ff6666">You will be redirected to /login after <span id="time"></span> seconds</b></br>
+            <img src="img/necoarc sleep.gif" alt="alt"/>
         </div>
-        <img src="img/necoarc sleep.gif" alt="alt"/>
+        
         <script>
             var count = 3;
             var time = document.getElementById('time');
