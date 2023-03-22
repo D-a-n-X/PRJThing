@@ -126,7 +126,7 @@ setInterval(update,0);
                                         <c:forEach items="${requestScope.s.groups}" var="g">
                                             <c:forEach items="${g.sessions}" var="ses" varStatus="loop">
                                                 <c:if test="${ses.date eq d and ses.slot.id eq slot.id}">
-                                                    <a href="session/info?session=${ses.id}">${ses.course.code}</a><br/>
+                                                    <a href="check?course=${ses.course.id}">${ses.course.code}</a><br/>
                                                     at ${ses.room.name} <br/>
                                                     <c:if test="${ses.status eq true}">
                                                         <c:if test="${ses.attendance.status eq true}">

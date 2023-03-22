@@ -32,8 +32,8 @@ public class AttendanceCheckController extends BaseRequiredAuthenticatedControll
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param req
+     * @param resp
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -59,7 +59,7 @@ public class AttendanceCheckController extends BaseRequiredAuthenticatedControll
             ArrayList<Session> ses1 = sdb.checkAtt(course, currentStu.getId());
             req.setAttribute("ses1", ses1);
         }
-        req.getRequestDispatcher("view/main/checkAtt.jsp").forward(req, resp);
+        req.getRequestDispatcher("view/main/check.jsp").forward(req, resp);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -96,6 +96,7 @@ public class AttendanceCheckController extends BaseRequiredAuthenticatedControll
      *
      * @return a String containing servlet description
      */
+    
     @Override
     public String getServletInfo() {
         return "Short description";

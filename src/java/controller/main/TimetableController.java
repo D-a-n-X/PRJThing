@@ -51,6 +51,7 @@ public class TimetableController extends BaseRequiredAuthenticatedController {
         String raw_from = request.getParameter("from");
         String raw_to = request.getParameter("to");
         
+        
         StudentDBContext studbs = new StudentDBContext();
         ArrayList<Student> stu = studbs.getStdCode(id);
         request.setAttribute("stu", stu);
@@ -61,7 +62,7 @@ public class TimetableController extends BaseRequiredAuthenticatedController {
         request.setAttribute("camps", camps);
         Date from;
         Date to;
-        if (raw_from != null && raw_to != null) {
+        if (raw_from != null) {
             from = Date.valueOf(raw_from);
             to = Date.valueOf(raw_to);
         } else {
