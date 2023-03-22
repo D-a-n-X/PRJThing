@@ -4,18 +4,29 @@
  */
 package controller.main;
 
+import controller.auth.BaseRequiredAuthenticatedController;
+import dal.CampusDBContext;
+import dal.CourseDBContext;
+import dal.SessionDBContext;
+import dal.StudentDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import model.Account;
+import model.Campus;
+import model.Course;
+import model.Session;
+import model.Student;
 
 /**
  *
  * @author admin
  */
-public class AttendanceCheckController extends HttpServlet {
+public class AttendanceCheckController extends BaseRequiredAuthenticatedController {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,21 +37,29 @@ public class AttendanceCheckController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AttendanceCheckController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AttendanceCheckController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        int a = (int) req.getSession().getAttribute("id");
+        StudentDBContext studb = new StudentDBContext();
+        ArrayList<Student> stu = studb.getStdCode(a);
+        req.setAttribute("stu", stu);
+        Student currentStu = stu.get(0);
+
+        CampusDBContext camp = new CampusDBContext();
+        ArrayList<Campus> camps = camp.search(a);
+        req.setAttribute("camps", camps);
+
+        CourseDBContext cb = new CourseDBContext();
+        ArrayList<Course> courses = cb.getStdCourse(currentStu.getId());
+        req.setAttribute("courses", courses);
+        String raw_course = req.getParameter("course");
+        if (raw_course != null) {
+            int course = Integer.parseInt(raw_course);
+            SessionDBContext sdb = new SessionDBContext();
+            ArrayList<Session> ses1 = sdb.checkAtt(course, currentStu.getId());
+            req.setAttribute("ses1", ses1);
         }
+        req.getRequestDispatcher("view/main/checkAtt.jsp").forward(req, resp);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -81,5 +100,15 @@ public class AttendanceCheckController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account acc) throws ServletException, IOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account acc) throws ServletException, IOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
