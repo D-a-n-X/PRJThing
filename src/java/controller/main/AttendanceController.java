@@ -67,7 +67,7 @@ public class AttendanceController extends BaseRequiredAuthenticatedController {
         }
         AttendanceDBContext db = new AttendanceDBContext();
         db.update(atts, sessionid);
-        response.sendRedirect("schedule");
+        response.sendRedirect("main/schedule");
     }
 
 }
