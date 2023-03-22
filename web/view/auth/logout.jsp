@@ -63,7 +63,7 @@ function update()
 setInterval(update,0);
 </script>
         <script>
-            window.location.href = 'main/login';
+            window.location.href = 'login';
         </script>
     </body>
 </html>
