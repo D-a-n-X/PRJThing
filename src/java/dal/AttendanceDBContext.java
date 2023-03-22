@@ -114,6 +114,61 @@ public class AttendanceDBContext extends DBContext{
         }
     }
     
+    public ArrayList<Attendance> searchBy(int gid, int cid) {
+          ArrayList<Attendance> att = new ArrayList<>();
+          PreparedStatement stm = null;
+          ResultSet rs = null;
+          try {
+               String sql = "SELECT ses.sessionid ,sg.sid, ses.status AS [sessionStatus], ISNULL(a.astatus,0) as [status], ISNULL(a.description,'') as [description]\n"
+                       + "FROM [Session] ses INNER JOIN [Group] g ON ses.gid = g.gid\n"
+                       + "INNER JOIN [Student_Group] sg ON sg.gid = g.gid\n"
+                       + "INNER JOIN [Course] c ON c.cid = ses.cid\n"
+                       + "LEFT JOIN Attendance a ON ses.sessionid = a.sessionid AND a.sid = sg.sid\n"
+                       + "WHERE c.cid = ? AND g.gid = ?";
+               stm = connection.prepareStatement(sql);
+               stm.setInt(1, cid);
+               stm.setInt(2, gid);
+               rs = stm.executeQuery();
+
+               while (rs.next()) {
+                    Attendance a = new Attendance();
+                    a.setStatus(rs.getBoolean("status"));
+                    a.setDescription(rs.getString("description"));
+
+                    Session ss = new Session();
+                    ss.setId(rs.getInt("sessionid"));
+                    ss.setStatus(rs.getBoolean("sessionStatus"));
+                    a.setSession(ss);
+
+                    Student s = new Student();
+                    s.setId(rs.getInt("sid"));
+                    a.setStudent(s);
+
+                    att.add(a);
+               }
+          } catch (SQLException ex) {
+               Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+          } finally {
+               try {
+                    rs.close();
+               } catch (SQLException ex) {
+                    Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+               }
+
+               try {
+                    stm.close();
+               } catch (SQLException ex) {
+                    Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               try {
+                    connection.close();
+               } catch (SQLException ex) {
+                    Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+               }
+          }
+          return att;
+     }
+    
     @Override
     public void insert(Object model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
