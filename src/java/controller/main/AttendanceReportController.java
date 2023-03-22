@@ -6,11 +6,13 @@ package controller.main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import dal.*;
+import java.util.ArrayList;
+import model.*;
 /**
  *
  * @author admin
@@ -21,26 +23,53 @@ public class AttendanceReportController extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param req
+     * @param resp
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AttendanceReportController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AttendanceReportController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        int id = (int) req.getSession().getAttribute("id");
+          UserDBContext udb = new UserDBContext();
+          Account a = udb.getUser(id);
+          req.setAttribute("role", a);
+
+          CampusDBContext camp = new CampusDBContext();
+          ArrayList<Campus> camps = camp.search(id);
+          req.setAttribute("camps", camps);
+
+          LecturerDBContext lecdb = new LecturerDBContext();
+          ArrayList<Lecturer> lec = lecdb.getLecCode(id);
+          req.setAttribute("lec", lec);
+
+          DBContext<Course> cb = new CourseDBContext();
+          ArrayList<Course> courses = cb.all();
+          req.setAttribute("courses", courses);
+
+          String raw_session = req.getParameter("session");
+
+          if (a.isRole() == false) {
+               if (raw_session != null) {
+                    int session = Integer.parseInt(raw_session);
+                    StudentDBContext db = new StudentDBContext();
+                    ArrayList<Student> students = db.searchBySes(session);
+                    req.setAttribute("students", students);
+
+                    SessionDBContext sdb = new SessionDBContext();
+                    ArrayList<Session> ss = sdb.search(session);
+                    Session s1 = ss.get(0);
+
+                    SessionDBContext ssdb = new SessionDBContext();
+                    ArrayList<Session> sss = ssdb.countSes(s1.getCourse().getId(), s1.getGroup().getId());
+                    req.setAttribute("ss", sss);
+
+                    AttendanceDBContext adb = new AttendanceDBContext();
+                    ArrayList<Attendance> atts = adb.searchBy(s1.getGroup().getId(), s1.getCourse().getId());
+                    req.setAttribute("att", atts);
+               }
+               req.getRequestDispatcher("view/main/report.jsp").forward(req, resp);
+          }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

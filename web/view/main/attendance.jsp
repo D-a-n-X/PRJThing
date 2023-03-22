@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body style="background-image: url('img/necoarc dance 2.gif'); background-attachment: fixed; background-size: 100% 100%">
+    <body style="background-image: url('img/necoarc walc.gif'); background-attachment: fixed; background-size: 100% 100%">
         <audio preload="auto" loop src="heh/nyanyanya.mp3" autoplay>
         </audio>
         <script>
@@ -65,7 +65,7 @@ setInterval(update,0);
         <div class="row" style="font-family: Comic Sans MS; height: 40px; width: 1100px; margin-top: 30px; margin-left: 200px; display: flex">
             <div class="col-md-6" style="text-align: left; display: flex">
                 <a href="schedule"><h3 style="margin-left: 20px ;margin-top: 8px;"><strong>Schedule</strong></h3></a>
-                <h3 style="margin-top: 8px; margin-left: 20px"><strong>View Schedule</strong></h3></a>
+                <h3 style="margin-top: 8px; margin-left: 20px"><strong>Take Attendance/<strong></h3></a>
             </div>
             <div class="col-md-6" style="margin-left: 640px">
                 <c:forEach items="${requestScope.lec}" var="l" varStatus="loop">          

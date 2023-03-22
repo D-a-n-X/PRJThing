@@ -46,11 +46,8 @@ public class TimetableController extends BaseRequiredAuthenticatedController {
         while (monday.getDayOfWeek() != DayOfWeek.MONDAY) {
             monday = monday.minusDays(1);
         }
-        LocalDate then = LocalDate.from(monday.plusDays(6));
         int id = (int) request.getSession().getAttribute("id");
         String raw_from = request.getParameter("from");
-        String raw_to = request.getParameter("to");
-        
         
         StudentDBContext studbs = new StudentDBContext();
         ArrayList<Student> stu = studbs.getStdCode(id);
@@ -62,13 +59,17 @@ public class TimetableController extends BaseRequiredAuthenticatedController {
         request.setAttribute("camps", camps);
         Date from;
         Date to;
+        LocalDate lFrom;
+        LocalDate lTo;
         if (raw_from != null) {
-            from = Date.valueOf(raw_from);
-            to = Date.valueOf(raw_to);
+            lFrom = LocalDate.parse(raw_from);
+            lTo = lFrom.plusDays(6);
         } else {
-            from = Date.valueOf(monday.format(DateTimeFormatter.ISO_DATE));
-            to = Date.valueOf(then);
+            lFrom = LocalDate.parse(monday.format(DateTimeFormatter.ISO_DATE));
+            lTo = lFrom.plusDays(6);
         }
+        from = Date.valueOf(lFrom);
+        to = Date.valueOf(lTo);
         SlotDBContext timeDB = new SlotDBContext();
         ArrayList<TimeSlot> slots = timeDB.all();
         request.setAttribute("slots", slots);
