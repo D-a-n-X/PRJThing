@@ -91,7 +91,7 @@ setInterval(update,0);
                     <h1>Attendance summary report</h1>
                     <table>
                          <thead>
-                              <tr style="background-color: rgb(0, 179, 255);">
+                             <tr style="background-color: #33ccff;">
                                    <th style="width: 50px; text-align: left;">INDEX</th>
                                    <th style="width: 180px; text-align: left;">IMAGE</th>
                                    <th style="width: 100px; text-align: left;">CODE</th>
@@ -147,7 +147,7 @@ setInterval(update,0);
                          </c:forEach>
                          </tbody>
                     </table>
-                    <h2>If a student were absent from class more than 20% of slots, they would <strong style ="color:red">NOT PASS</strong> the course</h2>
+      
                </div>
           </div>
     </body>
