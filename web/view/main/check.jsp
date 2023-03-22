@@ -67,8 +67,11 @@ setInterval(update,0);
 </script>
         <div class="row" style="font-family: Comic Sans MS; height: 40px; width: 1100px; margin-top: 30px; margin-left: 200px; display: flex">
             <div class="col-md-6" style="text-align: left; display: flex">
-                    <h3 style="margin-top: 8px; margin-left: 20px"><strong>View Schedule</strong></h3></a>
-            </div>
+                    <c:forEach items="${requestScope.stu}" var="s" varStatus="loop">          
+                        <a style="margin-left: 20px;" href="timetable"><h3 style="margin-top: 8px;"><strong>Timetable</strong></h3></a>
+                    </c:forEach>
+                    <h3 style="margin-top: 8px; margin-left: 20px"><strong>| User detail</strong></h3></a>
+                </div>
             <div class="col-md-6" style="margin-left: 680px">
                 <c:forEach items="${requestScope.stu}" var="s" varStatus="loop">          
                     <button style="font-family: Comic Sans MS; background-color: rgb(67, 205, 128); color: white">
@@ -87,14 +90,13 @@ setInterval(update,0);
                 </c:forEach>
             </div>
         </div>
-        <div class="row" style="margin-top: 50px; display: flex">
+        <div class="row" style="font-family: Comic Sans MS; margin-top: 50px; display: flex">
                 <div>
                     <table style=" border: 2px solid black">
-                        <caption style="text-align: center; font-size: large"><h1>Select a campus/program, term,<br/> course ...</h1></caption>
+                        <caption style="text-align: center; font-size: large"><h1>Select a course</h1></caption>
                         <thead style="background-color: rgb(0, 179, 255);">
                             <tr>
-                                <th scope="col" style="width: 100px; text-align: left;">Campus</th>
-                                <th scope="col" style="width: 100px; text-align: left;">Term</th>
+                                <th scope="col" style="width: 100px; text-align: left;"></th>
                                 <th scope="col" style="width: 420px; text-align: left;">Course</th>
                             </tr>
                         </thead>
@@ -109,12 +111,11 @@ setInterval(update,0);
                                         </tr>
                                     </table> 
                                 </td>
-                                <td valign="top"></td>
                                 <td valign="top">
                                     <table border="1">
                                         <tr>
                                             <c:forEach items="${requestScope.courses}" var="c" varStatus="loop">
-                                                <a style="margin-bottom: 5px" href="checkAtt?course=${c.id}" name="course"><strong>${c.name}</strong> </a><strong>(${c.code})</strong><br/>
+                                                <a style="margin-bottom: 5px" href="check?course=${c.id}" name="course"><strong>${c.name}</strong> </a><strong>(${c.code})</strong><br/>
                                             </c:forEach>
                                         </tr>
                                     </table> 

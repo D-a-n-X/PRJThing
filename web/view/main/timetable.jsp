@@ -138,7 +138,7 @@ setInterval(update,0);
                                                     </c:if>
                                                     <c:forEach items="${requestScope.stu}" var="s" varStatus="loop">          
                                                         <c:if test="${ses.status eq false}">
-                                                            <b style="color: red">(Not yet)</b><br/>
+                                                            <b style="color: black">(Not yet)</b><br/>
                                                         </c:if>
                                                     </c:forEach>
                                                     <button style="background-color: rgb(67, 205, 128); color: white">
