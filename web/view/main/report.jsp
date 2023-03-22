@@ -4,6 +4,8 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -85,5 +87,68 @@ setInterval(update,0);
                     </c:forEach>
         </div>
         </div>
+<div style = "font-family: Comic Sans MS">
+                    <h1>Attendance summary report</h1>
+                    <table>
+                         <thead>
+                              <tr style="background-color: rgb(0, 179, 255);">
+                                   <th style="width: 50px; text-align: left;">INDEX</th>
+                                   <th style="width: 180px; text-align: left;">IMAGE</th>
+                                   <th style="width: 100px; text-align: left;">CODE</th>
+                                   <th style="width: 200px; text-align: left;">FULL NAME</th>
+                                        <c:forEach items="${requestScope.ss}" var="ss" varStatus="loop">
+                                        <th>Slot ${loop.index + 1}</th>
+                                        </c:forEach>
+                                   <th style="width: 170px; text-align: center;">ABSENT</th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              <c:forEach items="${requestScope.students}" var="s" varStatus="loop">
+                              <script>
+                                   var absent = 0;
+                              </script>
+                              <tr>
+                                   <td>${loop.index + 1}</strong></td>
+                                   <td><img src="${s.img}" alt="alt"/></td>
+                                   <td>${s.code}</strong></td>
+                                   <td>${s.name}</strong></td>
+                                   <c:forEach items="${requestScope.att}" var="att" varStatus="loops">
+                                        <c:if test="${att.student.id eq s.id}">
+                                             <c:if test="${att.session.status eq true}">
+                                                  <c:if test="${att.status eq true}">
+                                                       <td style="text-align: center"><b style="color: #5cb85c">P</b><br/></td>
+                                                       </c:if>
+                                                       <c:if test="${att.status eq false}">
+                                                       <td style="text-align: center"><b style="color: red">A</b><br/></td>
+                                                  <script>
+                                                       absent = absent + 1;
+                                                  </script>
+                                             </c:if>
+                                        </c:if>
+                                        <c:if test="${att.session.status eq false}">
+                                             <td style="text-align: center"><b>_</b><br/></td>
+                                             </c:if>
+                                        </c:if>
+                                   <script>
+                                        var count = "${loops.index+1}";
+                                   </script>
+                              </c:forEach>
+                              <script>
+                                   var average = absent / count * 100;
+                                   var round = Math.round((average + Number.EPSILON) * 100) / 100;
+                              </script>    
+                              <td style="text-align: center"><strong>
+                                        <script>
+                                             document.write(round + "%");
+                                        </script>
+                                   </strong>
+                              </td>
+                              </tr>
+                         </c:forEach>
+                         </tbody>
+                    </table>
+                    <h2>If a student were absent from class more than 20% of slots, they would <strong style ="color:red">NOT PASS</strong> the course</h2>
+               </div>
+          </div>
     </body>
 </html>
