@@ -103,14 +103,13 @@ public class LoginFilter implements Filter {
        // Perform authentication check here
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        int campus = Integer.parseInt(request.getParameter("campus"));
-        if (isValidUser(username, password, campus)) {
+        if (isValidUser(username, password)) {
             // User is authenticated, so pass the request along the filter chain
             chain.doFilter(request, response);
         } else {
             // User is not authenticated, so redirect to login page
             HttpServletResponse httpResponse = (HttpServletResponse) response;
-            httpResponse.sendRedirect("/login");
+            httpResponse.sendRedirect("/PRJThing/login");
         }
         
         doBeforeProcessing(request, response);
@@ -237,9 +236,9 @@ public class LoginFilter implements Filter {
         filterConfig.getServletContext().log(msg);        
     }
 
-    private boolean isValidUser(String username, String password, int campus) {
+    private boolean isValidUser(String username, String password) {
         UserDBContext db = new UserDBContext();
-        Account acc = db.get(username, password, campus);
+        Account acc = db.get(username, password, 1);
         return acc != null;
     }
     

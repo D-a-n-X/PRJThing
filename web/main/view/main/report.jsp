@@ -77,7 +77,7 @@ setInterval(update,0);
                     </c:forEach>
                     |
                     <button style="background-color: rgb(67, 205, 128)">
-                        <a style="font-family: Comic Sans MS; color: white" href="logout">Logout</a>
+                        <a style="font-family: Comic Sans MS; color: white" href="http://localhost:9999/PRJThing/logout">Logout</a>
                     </button>
                     |
                     <c:forEach items="${requestScope.camps}" var="cs" varStatus="loop">          
