@@ -91,7 +91,7 @@ setInterval(update,0);
                     <h1>Attendance summary report</h1>
                     <table>
                          <thead>
-                             <tr style="background-color: #33ccff;">
+                             <tr>
                                    <th style="width: 50px; text-align: left;">INDEX</th>
                                    <th style="width: 180px; text-align: left;">IMAGE</th>
                                    <th style="width: 100px; text-align: left;">CODE</th>
