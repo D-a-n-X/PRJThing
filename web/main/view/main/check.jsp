@@ -92,9 +92,9 @@ setInterval(update,0);
         </div>
         <div class="row" style="font-family: Comic Sans MS; margin-top: 50px; display: flex">
                 <div>
-                    <table style=" border: 2px solid black">
+                    <table>
                         <caption style="text-align: center; font-size: large"><h1>Select a course</h1></caption>
-                        <thead style="background-color: rgb(0, 179, 255);">
+                        <thead>
                             <tr>
                                 <th scope="col" style="width: 100px; text-align: left;"></th>
                                 <th scope="col" style="width: 420px; text-align: left;">Course</th>
@@ -125,10 +125,10 @@ setInterval(update,0);
                     </table>
                 </div>
                 <div>
-                    <table style=" border: 2px solid black">
-                        <caption style="text-align: center; font-size: large; margin-bottom: 24px"><h1>... then see report</h1></caption>
+                    <table>
+                        <caption style="text-align: center; font-size: large; margin-bottom: 24px"><h1>See report</h1></caption>
                         <br/>
-                        <thead style="background-color: rgb(0, 179, 255);">
+                        <thead>
                             <tr>
                                 <th scope="col" style="height: 50px;width: 40px; text-align: left;">NO</th>
                                 <th scope="col" style="width: 170px; text-align: left;">DATE</th>
@@ -150,7 +150,7 @@ setInterval(update,0);
                                         ${loop.index+1}
                                     </td>
                                     <td valign="top">
-                                        <button style="background-color: #337ab7; color: white; border: 0px">
+                                        <button style="background-color: #6699ff; color: white; border: 0px">
                                             <my:dateTag value="${ss.date}" type="EEEE"></my:dateTag> <my:dateTag value="${ss.date}"></my:dateTag>
                                             </button>
                                         </td>

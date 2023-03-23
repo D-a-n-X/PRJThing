@@ -57,9 +57,8 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        int campus = Integer.parseInt(request.getParameter("campus"));
         UserDBContext db = new UserDBContext();
-        Account acc = db.get(username, password, campus);
+        Account acc = db.get(username, password, 1);
         if (acc != null) {
             int id = acc.getAccid();
             request.getSession().setAttribute("id", id);

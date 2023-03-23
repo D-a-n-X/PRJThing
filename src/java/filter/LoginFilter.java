@@ -96,6 +96,7 @@ public class LoginFilter implements Filter {
      * @exception IOException if an input/output error occurs
      * @exception ServletException if a servlet error occurs
      */
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
@@ -239,7 +240,7 @@ public class LoginFilter implements Filter {
     private boolean isValidUser(String username, String password) {
         UserDBContext db = new UserDBContext();
         Account acc = db.get(username, password, 1);
-        return acc != null;
+        return acc == null;
     }
     
 }
